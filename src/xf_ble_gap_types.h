@@ -467,7 +467,7 @@ typedef union {
     xf_ble_gap_evt_conn_param_upd_t conn_param_upd;
                                                 /*!< 连接参数更新事件的参数，
                                                  *  @ref xf_ble_gap_evt_conn_param_upd_t
-                                                 *  XF_BLE_GAP_EVT_CONN_PARAMS_UPDATE,
+                                                 *  XF_BLE_GAP_EVT_CONN_PARAM_UPDATE,
                                                  */
     xf_ble_gap_evt_param_pair_req_t pair_req;
 
@@ -497,7 +497,7 @@ enum _xf_ble_gap_evt_t {
 
     XF_BLE_GAP_EVT_PAIR_OOB_REQ,               
     XF_BLE_GAP_EVT_PAIR_END,                    /*!< 配对结束事件 */
-    XF_BLE_GAP_EVT_CONN_PARAMS_UPDATE,          /*!< 连接参数更新事件 */
+    XF_BLE_GAP_EVT_CONN_PARAM_UPDATE,           /*!< 连接参数更新事件 */
     _XF_BLE_GAP_EVT_MAX,                        /*!< BLE GAP 事件枚举结束值 */
 };
 

@@ -216,14 +216,14 @@ xf_err_t xf_ble_gap_stop_scan(void);
  * @brief BLE GAP 更新连接参数
  *
  * @param conn_id 连接 (链接) ID，见 @ref xf_ble_conn_id_t
- * @param params 更新连接参数的信息，见 @ref xf_ble_gap_conn_param_update_t
+ * @param param 更新连接参数的信息，见 @ref xf_ble_gap_conn_param_update_t
  * @return xf_err_t
  *      - XF_OK                 成功
  *      - XF_FAIL               失败
  *      - (OTHER)               @ref xf_err_t
  */
-xf_err_t xf_ble_gap_update_conn_params(
-    xf_ble_conn_id_t conn_id, xf_ble_gap_conn_param_update_t *params);
+xf_err_t xf_ble_gap_update_conn_param(
+    xf_ble_conn_id_t conn_id, xf_ble_gap_conn_param_update_t *param);
 
 /**
  * @brief BLE GAP 发起连接
