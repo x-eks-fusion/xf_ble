@@ -1,8 +1,8 @@
 /**
  * @file xf_ble_config_internal.h
+ * @author dotc (dotchan@qq.com)
  * @brief 此处列出了 XF_BLE 的可配置项。
  *  移植时请定义对应的外部配置文件 (xf_ble_config.h)，以影响此处的配置。
- * @author dotc (dotchan@qq.com)
  * @date 2025-02-24
  *
  * @Copyright (c) 2025, CorAL. All rights reserved.
