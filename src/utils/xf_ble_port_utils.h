@@ -2,10 +2,9 @@
  * @file xf_ble_port_utils.h
  * @author dotc (dotchan@qq.com)
  * @brief 主要为 BLE 对接时辅助的一些方法，可简化对接处理。
- * @version 0.1
  * @date 2024-12-06
  *
- * @copyright Copyright (c) 2024
+ * Copyright (c) 2024, CorAL. All rights reserved.
  *
  */
 

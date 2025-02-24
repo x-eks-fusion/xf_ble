@@ -2,7 +2,6 @@
  * @file xf_ble_base_data_types.h
  * @author dotc (dotchan@qq.com)
  * @brief
- * @version 1.0
  * @date 2025-01-23
  *
  * Copyright (c) 2025, CorAL. All rights reserved.

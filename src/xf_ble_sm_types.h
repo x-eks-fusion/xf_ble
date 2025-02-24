@@ -2,7 +2,6 @@
  * @file xf_ble_sm_types.h
  * @author dotc (dotchan@qq.com)
  * @brief
- * @version 1.0
  * @date 2024-08-06
  *
  * Copyright (c) 2024, CorAL. All rights reserved.
@@ -134,37 +133,37 @@ typedef uint8_t xf_ble_sm_authen_rqmt_t;         /*!< combination of the above b
  * @note 输入是按键、键盘，输出是显示数字用的界面。
  * @note IO 能力交换的目的是确定在安全简单配对的认证阶段 1 阶段中使用的认证算法。
  * @note 手机上弹出的不同的配对界面能对应到以下的 IO 能力
- * 
+ *
  * @details IO 能力详情
  * @code
  * ┌──────────────────────┬────────────────────────────────────────────────┐
  * │      输出能力                        描述
- * │ (Output Capability)                     
+ * │ (Output Capability)
  * ├──────────────────────┼────────────────────────────────────────────────┤
- * │    No output           设备无法显示 (indicate) 或通信6位十进制数字         
+ * │    No output           设备无法显示 (indicate) 或通信6位十进制数字
  * ├──────────────────────┼────────────────────────────────────────────────┤
- * │   Numeric output       设备能够显示或通信一个6位数字的十进制数字 
+ * │   Numeric output       设备能够显示或通信一个6位数字的十进制数字
  * └──────────────────────┴────────────────────────────────────────────────┘
- * 
+ *
  * ┌──────────────────────┬───────────────────────────────────────┐
  * │      输入能力                        描述
- * │ (Input Capability)                     
+ * │ (Input Capability)
  * ├──────────────────────┼───────────────────────────────────────┤
- * │     No input           设备不能指示“是”或“否”        
+ * │     No input           设备不能指示“是”或“否”
  * ├──────────────────────┼───────────────────────────────────────┤
  * │     Yes / No           设备至少有两个按钮，能映射到“是”和“否”，
- * │                        或者有机制可以指示“是”或“否”        
+ * │                        或者有机制可以指示“是”或“否”
  * ├──────────────────────┼───────────────────────────────────────┤
  * │     Keyboard           设备有一个数字键盘，可输入数字“0”到“9”，
  * │                        并进行确认。
  * │                        设备也有两个按钮，能映射到“是”和“否”，
- * │                        或者有机制可以指示“是”或“否”        
+ * │                        或者有机制可以指示“是”或“否”
  * └──────────────────────┴───────────────────────────────────────┘
- * 
+ *
  * ┌────────────────────┬────────────────────────────────────┐
  * │                                 本端 输出 能力
  * │                    ├──────────────────┬─────────────────┤
- * │                         No output       Numeric output       
+ * │                         No output       Numeric output
  * ├──────┬─────────────╔══════════════════╦═════════════════╗
  * │ 本端     No input     NoInputNoOutput    DisplayOnly
  * │      ├─────────────╠══════════════════╬═════════════════╣
@@ -172,27 +171,27 @@ typedef uint8_t xf_ble_sm_authen_rqmt_t;         /*!< combination of the above b
  * │      ├─────────────╠══════════════════╬═════════════════╣
  * │ 能力     Keyboard      KeyboardOnly      DisplayYesNo
  * └──────┴─────────────╚══════════════════╩═════════════════╝
- * 
+ *
  * DisplayOnly:     No input                                        + Numeric Output
  *                  不能指示"是"或"否"                                  能显示或数字通信 (6 位十进制数字)
  *                  (手机上表现: 一次确认配对后，需本端键入对端显示的配对 PIN 码)
- * 
+ *
  * DisplayYesNo:    ( (Yes / No) / (Keyboard) )                     + Numeric Output
  *                  (Yes / No) 能指示"是"或"否"                         能显示或数字通信 (6 位十进制数字)
  *                  (Keyboard) 能指示"是"或"否"，可输入十进制数字         能显示或数字通信 (6 位十进制数字)
  *                  认证方式: 数字比较模式 (Numeric Comparison)
- * 
- * KeyboardOnly:    Keyboard                                        + No Output 
+ *
+ * KeyboardOnly:    Keyboard                                        + No Output
  *                  能指示"是"或"否"，可输入十进制数字                  不能显示或数字通信 (6 位十进制数字)
  *                  认证方式: 密码输入模式 (Passkey Entry)
  *
  * NoInputNoOutput: ( (No input) / (Yes / No) )                     + No Output
  *                  不能指示"是"或"否"                                  不能显示或数字通信 (6 位十进制数字)
  *                  认证方式: Just Works
- * 
+ *
  * KeyboardDisplay: Keyboard                                        + Numeric Output
- *                  能指示"是"或"否"                                    能显示或数字通信 (6 位十进制数字)    
- * 
+ *                  能指示"是"或"否"                                    能显示或数字通信 (6 位十进制数字)
+ *
  * 认证方式:
  * - Just Works ：不认证，不需要用户来参与，是最简单的方法，但不能防 MITM 。
  *      - 适用于没有显示屏或输入能力的设备，例如一些传感器或智能灯泡。
@@ -202,7 +201,7 @@ typedef uint8_t xf_ble_sm_authen_rqmt_t;         /*!< combination of the above b
  *          - 一个设备显示 6 位数字 (Passkey)，另一个设备的需要输入这个数字来，其后 SMP 会将输入的数字传输给对端，来校验数字是否正确。
  *          - 需要分别在两个设备上输入相同的 6 位数字 (Passkey)，其后配对过程会分别校验对端设备的输入来认证设备。
  *      - 这提供一定程度的防护来抵御 MITM 攻击，因为攻击者需要知道或拦截 Passkey 来进行攻击。
- *      - 手机上表现: 一次确认配对后，需等待对端键入的本端显示的配对数字
+ *      - 手机上表现: 一次确认配对后，需等待对端键入的本端显示的配对数字；又或者是手机需要输入对端显示的配对数字。
  * - Numeric Comparison ：种方式需要两端设备生成且并显示相同的 6 位数字，用户比较后进行确认。
  *      - 适用于双方设备都有显示屏的场景。
  *      - 这也能提供一定程度的防护来抵御 MITM 攻击。
@@ -210,17 +209,17 @@ typedef uint8_t xf_ble_sm_authen_rqmt_t;         /*!< combination of the above b
  * - OOB (Out of Band) ：这种方法中，设备使用一个外部的通道或方法来交换或获取密钥信息。
  *      - 例如通过 NFC ，二维码或者 WIFI 之类的来认证。
  * @endcode
- * 
- * 
- * @details 
- *  Initiator (发起设备) 与 Responder (响应设备) 间 IO能力与认证情况 (authentication) 的映射详参: 
- *  《Core_v5.4》 >> BLUETOOTH CORE SPECIFICATION Version 5.4 | Vol 3, Part C 
- *  >> 5.2.2.6 IO and OOB capability mapping to authentication stage 1 method 
+ *
+ *
+ * @details
+ *  Initiator (发起设备) 与 Responder (响应设备) 间 IO能力与认证情况 (authentication) 的映射详参:
+ *  《Core_v5.4》 >> BLUETOOTH CORE SPECIFICATION Version 5.4 | Vol 3, Part C
+ *  >> 5.2.2.6 IO and OOB capability mapping to authentication stage 1 method
  *  >> Table 5.7: IO capability mapping to authentication stage 1
- * 
+ *
  * @details 以下提到的输出显示情况可对比一般手机 ble 连接时的配对弹窗情况进行解读:
  *  输出显示是(或)否 : 配对弹窗: 要与此设备配对吗? [取消](这等同否) [配对](这等同是)
- * 
+ *
  * 也可通过以下视频 《BLE蓝牙配对模式演示》 进行理解，
  * 地址: https://www.bilibili.com/video/BV1oK411Y7Vh/?spm_id_from=333.337.search-card.all.click&vd_source=92939d5ab16fcf7b067d00f2c763d2b6
  */

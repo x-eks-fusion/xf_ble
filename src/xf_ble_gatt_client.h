@@ -2,7 +2,6 @@
  * @file xf_ble_gatt_client.h
  * @author dotc (dotchan@qq.com)
  * @brief
- * @version 1.0
  * @date 2024-08-06
  *
  * Copyright (c) 2024, CorAL. All rights reserved.

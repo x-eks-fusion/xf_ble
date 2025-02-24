@@ -2,10 +2,9 @@
  * @file xf_ble_utils.c
  * @author dotc (dotchan@qq.com)
  * @brief 主要为 BLE 辅助的一些方法，可简化处理。
- * @version 0.1
- * @date 2024-02-07
+ * @date 2024-12-06
  *
- * @copyright Copyright (c) 2025
+ * Copyright (c) 2024, CorAL. All rights reserved.
  *
  */
 

@@ -2,12 +2,12 @@
  * @file xf_ble_types.h
  * @author dotc (dotchan@qq.com)
  * @brief
- * @version 1.0
  * @date 2024-08-06
  *
  * Copyright (c) 2024, CorAL. All rights reserved.
  *
  */
+
 
 /**
  * @cond (XFAPI_USER || XFAPI_PORT || XFAPI_INTERNAL)
@@ -23,6 +23,7 @@
 /* ==================== [Includes] ========================================== */
 
 #include "xf_utils.h"
+#include "xf_ble_config_internal.h"
 
 /**
  * @cond (XFAPI_USER || XFAPI_PORT)
@@ -36,8 +37,6 @@ extern "C" {
 #endif
 
 /* ==================== [Defines] =========================================== */
-
-#define XF_BLE_IS_ENABLE 1
 
 /* ==================== [Typedefs] ========================================== */
 
