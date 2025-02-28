@@ -371,6 +371,14 @@ enum _xf_ble_gap_disconnect_reason_t {
 };
 
 /**
+ * @brief BLE 连接请求事件的参数
+ */
+typedef struct {
+    xf_ble_conn_id_t conn_id;               /*!< 链接(连接) ID */
+    xf_ble_addr_t peer_addr;                /*!< 对端地址，见 @ref xf_ble_addr_t */
+} xf_ble_gap_evt_param_connect_req_t;
+
+/**
  * @brief BLE 连接事件的参数
  */
 typedef struct {
@@ -450,6 +458,10 @@ typedef struct {
  * @brief BLE GAP 事件回调参数
  */
 typedef union {
+    xf_ble_gap_evt_param_connect_req_t conn_req;/*!< 连接请求事件的参数，
+                                                 *  @ref xf_ble_gap_evt_param_connect_req_t
+                                                 *  XF_BLE_GAP_EVT_CONNECT_REQ
+                                                 */
     xf_ble_gap_evt_param_connect_t connect;     /*!< 连接事件的参数，
                                                  *  @ref xf_ble_gap_evt_param_connect_t
                                                  *  XF_BLE_GAP_EVT_CONNECT
@@ -469,11 +481,21 @@ typedef union {
                                                  *  @ref xf_ble_gap_evt_conn_param_upd_t
                                                  *  XF_BLE_GAP_EVT_CONN_PARAM_UPDATE,
                                                  */
-    xf_ble_gap_evt_param_pair_req_t pair_req;
+    xf_ble_gap_evt_param_pair_req_t pair_req;   /*!< 配对请求事件的参数，
+                                                 *  @ref xf_ble_gap_evt_param_pair_req_t
+                                                 *  XF_BLE_GAP_EVT_PAIR_REQ,
+                                                 */
 
-    xf_ble_gap_evt_param_pair_passkey_disp_t pair_disp;
-    xf_ble_gap_evt_param_pair_passkey_entry_t pair_entry;
-
+    xf_ble_gap_evt_param_pair_passkey_disp_t pair_key_disp;
+                                                /*!< 配对码 (passkey) 显示 (请求) 事件的参数，
+                                                 *  @ref xf_ble_gap_evt_param_pair_passkey_disp_t
+                                                 *  XF_BLE_GAP_EVT_PAIR_PASSKEY_REQ,
+                                                 */
+    xf_ble_gap_evt_param_pair_passkey_entry_t pair_key_entry;
+                                                /*!< 配对码 (passkey) 输入事件的参数，
+                                                 *  @ref xf_ble_gap_evt_param_pair_passkey_entry_t
+                                                 *  XF_BLE_GAP_EVT_PAIR_PASSKEY_ENTRY,
+                                                 */
     xf_ble_gap_evt_param_pair_end_t pair_end;   /*!< 配对结束事件的参数，
                                                  *  @ref xf_ble_gap_evt_param_pair_end_t
                                                  *  XF_BLE_GAP_EVT_PAIR_END
@@ -485,6 +507,7 @@ typedef union {
  */
 typedef uint8_t xf_ble_gap_evt_t;
 enum _xf_ble_gap_evt_t {
+    XF_BLE_GAP_EVT_CONNECT_REQ,                 /*!< 连接请求事件 */
     XF_BLE_GAP_EVT_CONNECT,                     /*!< 连接事件 */
     XF_BLE_GAP_EVT_DISCONNECT,                  /*!< 断连事件 */
     XF_BLE_GAP_EVT_SCAN_RESULT,                 /*!< 收到扫描结果事件 */
