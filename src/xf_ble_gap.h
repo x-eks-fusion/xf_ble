@@ -130,7 +130,7 @@ xf_err_t xf_ble_gap_get_local_name(uint8_t *name, uint8_t *len);
 /**
  * @brief BLE GAP 广播创建
  *
- * @param[out] adv_id 广播 ID
+ * @param[out] adv_id 广播 ID，见 @ref xf_ble_adv_id_t
  * @param param 广播参数，见 @ref xf_ble_gap_adv_param_t
  * @param data 广播数据，见 @ref xf_ble_gap_adv_data_t
  * @return xf_err_t
@@ -139,10 +139,9 @@ xf_err_t xf_ble_gap_get_local_name(uint8_t *name, uint8_t *len);
  *      - (OTHER)               @ref xf_err_t
  */
 xf_err_t xf_ble_gap_create_adv(
-    uint8_t *adv_id,
+    xf_ble_adv_id_t *adv_id,
     const xf_ble_gap_adv_param_t *param,
-    const xf_ble_gap_adv_data_t *data
-);
+    const xf_ble_gap_adv_data_t *data);
 
 /**
  * @brief BLE GAP 广播销毁
