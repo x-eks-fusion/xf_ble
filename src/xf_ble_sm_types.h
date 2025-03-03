@@ -277,33 +277,13 @@ typedef struct _xf_ble_sm_csrk_t {
 } xf_ble_sm_csrk_t;
 
 /**
- * @brief BLE SM 参数值
- */
-typedef union _xf_ble_sm_param_val_t
-{
-    xf_ble_sm_io_cap_t io_cap;                  /*!< 输入输出能力 */
-    xf_ble_sm_oob_data_flag_t oob_flag;         /*!< OOB (Out of Band) 数据标志位， 见 @ref xf_ble_sm_oob_data_flag_t */
-    xf_ble_sm_authen_rqmt_t authen_rqmt;        /*!< 认证要求， 见 @ref xf_ble_sm_authen_rqmt_t */
-    xf_ble_sm_secty_rqmt_t secty_rqmt;          /*!< 安全要求， 见 @ref xf_ble_sm_secty_rqmt_t */
-} xf_ble_sm_param_val_t;
-
-typedef uint8_t xf_ble_sm_param_type_t;
-enum _xf_ble_sm_param_type_t {
-    XF_BLE_SM_PARAM_AUTHEN_RQMT,                /*!< 本端设备的认证要求 */
-    XF_BLE_SM_PARAM_IO_CAP_MODE,                /*!< 本端设备的 (人机交互) 能力 */
-    XF_BLE_SM_PARAM_OOB_DATA_FLAG,              /*!< OOB (Out of Band) 数据标志位 */
-    XF_BLE_SM_PARAM_SECTY_RQMT,                 /*!< 安全要求 */
-    _XF_BLE_SM_PARAM_TYPE_MAX,                 
-};
-
-/**
  * @brief BLE SM 配对特性类型
  */
 typedef uint8_t xf_ble_sm_pair_feature_t;
 enum _xf_ble_sm_pair_feature_t {
-    XF_BLE_SM_PAIR_FEATURE_AUTHEN_RQMT,                /*!< 本端设备的认证要求 */
-    XF_BLE_SM_PAIR_FEATURE_IO_CAP_MODE,                /*!< 本端设备的 (人机交互) 能力 */
-    XF_BLE_SM_PAIR_FEATURE_OOB_DATA_FLAG,              /*!< OOB (Out of Band) 数据标志位 */
+    XF_BLE_SM_PAIR_FEATURE_AUTHEN_RQMT,                 /*!< 本端设备的认证要求 */
+    XF_BLE_SM_PAIR_FEATURE_IO_CAP,                      /*!< 本端设备的 (人机交互) 能力 */
+    XF_BLE_SM_PAIR_FEATURE_OOB_FLAG,                    /*!< OOB (Out of Band) 数据标志位 */
     XF_BLE_SM_PAIR_FEATURE_SECTY_RQMT,                  /*!< 安全要求 */
     _XF_BLE_SM_PAIR_FEATURE_MAX,                 
 };
