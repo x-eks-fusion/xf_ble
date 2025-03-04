@@ -294,14 +294,12 @@ enum _xf_ble_sm_pair_feature_t {
 typedef uint8_t xf_ble_sm_pair_feature_param_t;
 union _xf_ble_sm_pair_feature_param_t
 {
+    uintptr_t _untype;
     xf_ble_sm_io_cap_t io_cap;                  /*!< 输入输出能力 */
     xf_ble_sm_oob_data_flag_t oob_flag;         /*!< OOB (Out of Band) 数据标志位， 见 @ref xf_ble_sm_oob_data_flag_t */
     xf_ble_sm_authen_rqmt_t authen_rqmt;        /*!< 认证要求， 见 @ref xf_ble_sm_authen_rqmt_t */
     xf_ble_sm_secty_rqmt_t secty_rqmt;          /*!< 安全要求， 见 @ref xf_ble_sm_secty_rqmt_t */
 };
-
-
-
 
 /* ==================== [Macros] ============================================ */
 
