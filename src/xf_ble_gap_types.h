@@ -56,10 +56,19 @@ typedef enum {
  * @note  这里仅列出部分常用的类型，更多可选类型参见蓝牙官方文档
  *  《Assigned Numbers》 > 2.3 Common Data Types
  * @see https://www.bluetooth.com/specifications/assigned-numbers/
+ * 
+ *  《Supplement to the Bluetooth Core Specification》
+ * 
  */
 typedef uint8_t xf_ble_gap_adv_struct_type_t;
 
 #define XF_BLE_ADV_STRUCT_TYPE_FLAGS                    0x01
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID16_LIST_PART     0x02
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID16_LIST_ALL      0x03
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID32_LIST_PART     0x04
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID32_LIST_ALL      0x05
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID128_LIST_PART    0x06
+#define XF_BLE_ADV_STRUCT_TYPE_SVC_UUID128_LIST_ALL     0x07
 #define XF_BLE_ADV_STRUCT_TYPE_LOCAL_NAME_SHORT         0x08
 #define XF_BLE_ADV_STRUCT_TYPE_LOCAL_NAME_ALL           0x09
 #define XF_BLE_ADV_STRUCT_TYPE_TX_POWER_LEVEL           0x0A    // 1 bytes
@@ -98,10 +107,11 @@ typedef uint8_t xf_ble_gap_adv_struct_type_t;
  * @endcode
  */
 typedef union _xf_ble_gap_adv_struct_data_t {
-    xf_ble_var_uintptr_t adv_var;           /*!< 通用类型 (类型未定) 的广播数据单元数据 */
-    xf_ble_flags_t flag;                    /*!< 类型为: 0x01, type:flag，见 @ref xf_ble_flags_t  */
-    uint8_t *local_name;                    /*!< 类型为: 0x08, type:name short; 0x09, type:name all */
-    xf_ble_appearance_t appearance;         /*!< 类型为: 0x19, type:appearance，见 @ref xf_ble_appearance_t */
+    xf_ble_var_uintptr_t adv_var;       /*!< 通用类型 (类型不定) 的广播数据单元数据 */
+    uint8_t flag;                       /*!< 类型为: 0x01, type:flag */
+    uint8_t *uuid_list;                 /*!< 类型为: [0x02,0x07], 服务 UUID 的列表（16/32/128位，完整/不完整列表）*/
+    uint8_t *local_name;                /*!< 类型为: 0x08, type:name short; 0x09, type:name all */
+    xf_ble_appearance_t appearance;     /*!< 类型为: 0x19, type:appearance，见 @ref xf_ble_appearance_t */
 } xf_ble_gap_adv_struct_data_t;
 
 /**
