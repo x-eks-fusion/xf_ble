@@ -90,7 +90,7 @@ typedef struct {
 } xf_ble_addr_t;
 
 /**
- * @brief BLE app id
+ * @brief BLE APP ID
  */
 typedef uint8_t xf_ble_app_id_t;
 
@@ -100,22 +100,31 @@ typedef uint8_t xf_ble_app_id_t;
 #define XF_BLE_APP_ID_INVALID   (0)
 
 /**
- * @brief BLE 广播 id
+ * @brief BLE 广播 ID
  */
 typedef uint8_t xf_ble_adv_id_t;
 
 /**
  * @brief 无效广播 ID
  */
-#define XF_BLE_ADV_ID_INVALID   (0)
+#ifndef XF_BLE_ADV_ID_INVALID
+#	define XF_BLE_ADV_ID_INVALID  (0)
+#endif
 
 /**
- * @brief BLE 连接 (链接) id
+ * @brief BLE 连接 (链接) ID
  * 
  * @note 目前暂未规定无效 conn_id 值
  *  因为部分平台 conn_id 是 U8，部分是 U16 的
  */
 typedef uint8_t xf_ble_conn_id_t;
+
+/**
+ * @brief 无效 连接 (链接) ID
+ */
+#ifndef XF_BLE_CONN_ID_INVALID
+#	define XF_BLE_CONN_ID_INVALID  (0)
+#endif
 
 /**
  * @brief BLE 属性句柄

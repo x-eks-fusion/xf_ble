@@ -450,7 +450,7 @@ typedef struct {
     int rssi;                                   /*!< 扫到的设备的 RSSI 值 */
     xf_ble_addr_t *addr;                        /*!< 扫到的设备的地址，见 @ref xf_ble_addr_t */
     xf_ble_gap_scanned_adv_type_t type;         /*!< 扫到的设备广播类型，见 @ref xf_ble_gap_scanned_adv_type_t */
-    uint8_t adv_data_len;                       /*!< 广播数据的长度 (指整个广播数据 AdvData ) */
+    uint16_t adv_data_len;                       /*!< 广播数据的长度 (指整个广播数据 AdvData ) */
     uint8_t *adv_data;                          /*!< 广播数据 (指整个广播数据 AdvData ) */
 } xf_ble_gap_evt_param_scan_result_t;
 
