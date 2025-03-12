@@ -25,6 +25,8 @@
 #include "xf_utils.h"
 #include "xf_ble_config_internal.h"
 
+#if XF_BLE_IS_ENABLE  || defined(__DOXYGEN__)
+
 /**
  * @cond (XFAPI_USER || XFAPI_PORT)
  * @addtogroup group_xf_wal_ble
@@ -256,5 +258,7 @@ typedef union _xf_ble_var_uintptr_t {
  * End of addtogroup group_xf_wal_ble
  * @}
  */
+
+#endif /* XF_BLE_IS_ENABLE */
 
 #endif /* __XF_BLE_TYPES_H__ */
