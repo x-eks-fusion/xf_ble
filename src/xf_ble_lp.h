@@ -49,6 +49,10 @@ xf_err_t xf_ble_lp_init(void);
 
 xf_err_t xf_ble_lp_deinit(void);
 
+xf_err_t xf_ble_lp_enable(void);
+
+xf_err_t xf_ble_lp_disable(void);
+
 /**
  * @brief ble lp 配置
  * 
