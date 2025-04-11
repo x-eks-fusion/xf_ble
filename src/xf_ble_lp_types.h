@@ -40,63 +40,46 @@ extern "C" {
 
 /* ==================== [Typedefs] ========================================== */
 
+/**
+ * @brief XF BLE 低功耗状态
+ */
 typedef enum _xf_ble_lp_state_t
 {
-    XF_BLE_LP_STATE_WAKEUP_CONTEXT,
-    XF_BLE_LP_STATE_WAKEUP_RST,
-    XF_BLE_LP_STATE_ACTIVE,
+    XF_BLE_LP_STATE_WAKEUP_CONTEXT,     /*!< 唤醒后在上下文中恢复 (执行) */       
+    XF_BLE_LP_STATE_WAKEUP_RST,         /*!< 唤醒后复位 */
+    XF_BLE_LP_STATE_ACTIVE,             /*!< 活跃状态 (未休眠) */
 } xf_ble_lp_state_t;
 
+/**
+ * @brief XF BLE 低功耗模式
+ */
 typedef enum _xf_ble_lp_mode_t
 {
-    XF_BLE_LP_MODE_SLEEP_CONTEXT    = (0x1 << XF_BLE_LP_STATE_WAKEUP_CONTEXT),
-    XF_BLE_LP_MODE_SLEEP_RST        = (0x1 << XF_BLE_LP_STATE_WAKEUP_RST),
+    XF_BLE_LP_MODE_SLEEP_CONTEXT    = (0x1 << XF_BLE_LP_STATE_WAKEUP_CONTEXT),      /*!< 唤醒后将会在上下文中恢复的休眠模式 */
+    XF_BLE_LP_MODE_SLEEP_RST        = (0x1 << XF_BLE_LP_STATE_WAKEUP_RST),          /*!< 唤醒后将会复位的休眠模式 */
 } xf_ble_lp_mode_t;
 
-typedef enum _xf_ble_lp_ext_state_t
-{
-    XF_BLE_LP_EXT_STATE_IDLE,
-    XF_BLE_LP_EXT_STATE_BUSY,
-} xf_ble_lp_ext_state_t;
-
+/**
+ * @brief XF BLE 低功耗配置
+ */
 typedef enum _xf_ble_lp_cfg_t
 {
-    XF_BLE_LP_CFG_SLEEP_FUNC,
-    XF_BLE_LP_CFG_EXT_STATE_GET,
-    XF_BLE_LP_CFG_EVT_INIT_TIME_GET,
+    XF_BLE_LP_CFG_SLEEP_FUNC,       /*!< 自定义的休眠方法 */
 } xf_ble_lp_cfg_t;
-
-typedef enum _xf_ble_lp_sleep_time_t
-{
-    XF_BLE_LP_SLEEP_TIME_US,
-    XF_BLE_LP_SLEEP_TIME_TICK,
-    XF_BLE_LP_SLEEP_TIME_MS,
-} xf_ble_lp_sleep_time_t;
 
 typedef void * xf_ble_lp_cfg_value_t;
 
 union _xf_ble_lp_cfg_value_t
 {
     /**
-     * @brief 用户自定义的睡眠方法的实现 
-     * @param sleep_duration BLE 协议栈当前预估会休眠的时间，
-     *  暂未规定单位，因为各个平台可能不同，固定单位会增加转换的工作。
+     * @brief 用户自定义的睡眠方法的实现
+     * @param base_us 休眠时间的单位，以 us 为基准。
+     * @param sleep_duration BLE 协议栈当前预估会休眠的时间，时间单位为 base_us 。
      * 
      * @note 默认 (不设置 sleep_func) 时，使用底层实现的方法，
-     *  设置为自定义 sleep_func 时，需自行根据 sleep_duration 选择休眠策略。
+     *  设置为自定义 sleep_func 时，需自行根据 mode、base_us、 sleep_duration 选择休眠策略。
      */
-    xf_ble_lp_state_t (*sleep_func)(xf_ble_lp_mode_t mode, uint32_t sleep_duration);
-
-    /**
-     * @brief BLE 协议栈以外的可休眠状态获取 (如其他外设、任务当前是否允许休眠)
-     * @param sleep_duration BLE 协议栈当前预估会休眠的时间，
-     *  暂未规定单位，因为各个平台可能不同，固定单位会增加转换的工作。
-     * 
-     * @note 默认 (不设置 sleep_func) 时，使用底层实现的方法，即不关注外部休眠状态（是否允许休眠），
-     *  设置为自定义 sleep_func 时，需自行根据 sleep_duration 选择休眠策略。
-     */
-    xf_ble_lp_ext_state_t (*ext_state_get)(void);
-    void (*evt_init_time_get)(xf_ble_lp_sleep_time_t *type, uint32_t *time);  // ble 事件发起的时间 (从启动时) 的获取
+    xf_ble_lp_state_t (*sleep_func)(xf_ble_lp_mode_t mode, float base_us, uint32_t sleep_duration);
     void *_ptr;
 };
 

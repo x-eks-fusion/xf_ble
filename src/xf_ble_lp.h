@@ -45,12 +45,32 @@ extern "C" {
 
 /* ==================== [Global Prototypes] ================================= */
 
+/**
+ * @brief XF BLE 低功耗初始化
+ * 
+ * @return xf_err_t 
+ */
 xf_err_t xf_ble_lp_init(void);
 
+/**
+ * @brief XF BLE 低功耗反初始化
+ * 
+ * @return xf_err_t 
+ */
 xf_err_t xf_ble_lp_deinit(void);
 
+/**
+ * @brief XF BLE 低功耗功能开启
+ * 
+ * @return xf_err_t 
+ */
 xf_err_t xf_ble_lp_enable(void);
 
+/**
+ * @brief XF BLE 低功耗功能关闭
+ * 
+ * @return xf_err_t 
+ */
 xf_err_t xf_ble_lp_disable(void);
 
 /**
